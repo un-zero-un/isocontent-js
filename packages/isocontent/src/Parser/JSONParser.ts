@@ -3,33 +3,29 @@ import NodeList from '../AST/NodeList';
 import TextNode from '../AST/TextNode';
 import BlockNode from '../AST/BlockNode';
 
-interface JsonTextNode {
+export interface JsonTextNode {
     readonly type: 'text';
     readonly value: string;
 }
 
-interface JsonBlockNode {
+export interface JsonBlockNode {
     readonly type: 'block';
     readonly block_type: string;
-    readonly arguments: {
+    readonly arguments?: {
         [key: string]: string | number | boolean;
     };
     readonly children?: JsonNodeList;
 }
 
-type JsonNode = JsonTextNode | JsonBlockNode;
-type JsonNodeList = JsonNode[];
-type JsonInput = JsonNodeList | JsonNode;
+export type JsonNode = JsonTextNode | JsonBlockNode;
+export type JsonNodeList = JsonNode[];
+export type JsonInput = JsonNodeList | JsonNode;
 
 export default class JSONParser {
-    public parse(json: string): ASTElement {
-        return this.doParse(JSON.parse(json));
-    }
-
-    private doParse(input: JsonInput): ASTElement {
+    public parse(input: JsonInput): ASTElement {
         if (input instanceof Array) {
             return NodeList.fromArray(
-                input.map(subnode => this.doParse(subnode) as Node)
+                input.map(subNode => this.parse(subNode) as Node)
             );
         }
 
@@ -41,7 +37,7 @@ export default class JSONParser {
                     input.block_type,
                     input.arguments,
                     input.children
-                        ? (this.doParse(input.children) as NodeList)
+                        ? (this.parse(input.children) as NodeList)
                         : null
                 );
         }

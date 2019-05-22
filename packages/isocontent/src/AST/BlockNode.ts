@@ -1,9 +1,9 @@
 import Node, { BLOCK_NODE } from './Node';
 import NodeList from './NodeList';
 
-export type BlockNodeProps = {
+export interface BlockNodeProps {
     [key: string]: string | number | boolean;
-};
+}
 
 export default class BlockNode implements Node {
     readonly TYPE = BLOCK_NODE;

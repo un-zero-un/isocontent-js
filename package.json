@@ -5,7 +5,12 @@
         "assert": "^2.0.0",
         "jest": "^24.8.0",
         "lerna": "^3.14.1",
-        "ts-jest": "^24.0.2"
+        "prettier": "^1.17.1",
+        "ts-jest": "^24.0.2",
+        "tslint": "^5.16.0",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-plugin-prettier": "^2.0.1",
+        "tslint-react": "^4.0.0"
     },
     "dependencies": {
         "@types/jest": "^24.0.13",
@@ -15,7 +20,8 @@
         "build": "lerna run build",
         "prettier": "prettier --write --list-different \"packages/*/src/**/*.{js,jsx,ts,tsx,css}\" \"examples/*/src/**/*.{js,jsx,ts,tsx,css}\"",
         "test_unit": "jest --coverage",
-        "test": "yarn run test_unit"
+        "test": "yarn run test_unit",
+        "tslint": "tslint 'packages/*/src/**/*.*s'"
     },
     "workspaces": [
         "packages/*",

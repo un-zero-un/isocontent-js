@@ -1,8 +1,8 @@
 module.exports = {
     "roots": [
-        "<rootDir>/packages"
+        "<rootDir>/packages/isocontent/src"
     ],
     "transform": {
         "^.+\\.tsx?$": "ts-jest"
     },
-}
+};
