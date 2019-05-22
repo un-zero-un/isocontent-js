@@ -1,0 +1,10 @@
+{
+  "name": "isocontent-example-simple-parsing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "isocontent": "^0.1.0"
+  }
+}

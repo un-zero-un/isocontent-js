@@ -1,0 +1,24 @@
+{
+    "name": "isocontent-packages",
+    "private": true,
+    "devDependencies": {
+        "assert": "^2.0.0",
+        "jest": "^24.8.0",
+        "lerna": "^3.14.1",
+        "ts-jest": "^24.0.2"
+    },
+    "dependencies": {
+        "@types/jest": "^24.0.13",
+        "typescript": "^3.4.5"
+    },
+    "scripts": {
+        "build": "lerna run build",
+        "prettier": "prettier --write --list-different \"packages/*/src/**/*.{js,jsx,ts,tsx,css}\" \"examples/*/src/**/*.{js,jsx,ts,tsx,css}\"",
+        "test_unit": "jest --coverage",
+        "test": "yarn run test_unit"
+    },
+    "workspaces": [
+        "packages/*",
+        "examples/*"
+    ]
+}
