@@ -4,7 +4,8 @@
     "private": true,
     "dependencies": {
         "react": "^16.8.6",
-        "react-dom": "^16.8.6"
+        "react-dom": "^16.8.6",
+        "react-isocontent-dom": "^0.1.0"
     },
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
