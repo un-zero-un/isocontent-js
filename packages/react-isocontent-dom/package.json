@@ -1,7 +1,7 @@
 {
-    "name": "react-isocontent",
+    "name": "react-isocontent-dom",
     "version": "0.1.0",
-    "description": "Render Isocontent ASTs with react",
+    "description": "Render Isocontent ASTs with react DOM",
     "main": "src/index.js",
     "repository": "https://github.com/un-zero-un/isocontent-js",
     "author": "Yohan Giarelli <yohan@un-zero-un.fr>",
@@ -11,9 +11,11 @@
     },
     "private": false,
     "devDependencies": {
-        "react": "^16.8.6"
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6"
     },
     "dependencies": {
-        "isocontent": "^0.1.0"
+        "isocontent": "^0.1.0",
+        "react-isocontent": "^0.1.0"
     }
 }

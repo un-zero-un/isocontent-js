@@ -30,11 +30,7 @@ export default class BlockNode implements Node {
         return this._children;
     }
 
-    public static fromBlockType(
-        blockType: string,
-        props: BlockNodeProps = {},
-        children: NodeList | null = null
-    ) {
+    public static fromBlockType(blockType: string, props: BlockNodeProps = {}, children: NodeList | null = null) {
         return new BlockNode(blockType, props, children);
     }
 }

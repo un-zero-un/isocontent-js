@@ -3,6 +3,8 @@
     "private": true,
     "devDependencies": {
         "assert": "^2.0.0",
+        "enzyme": "^3.9.0",
+        "enzyme-adapter-react-16": "^1.13.1",
         "jest": "^24.8.0",
         "lerna": "^3.14.1",
         "prettier": "^1.17.1",
@@ -18,10 +20,30 @@
     },
     "scripts": {
         "build": "lerna run build",
-        "prettier": "prettier --write --list-different \"packages/*/src/**/*.{js,jsx,ts,tsx,css}\" \"examples/*/src/**/*.{js,jsx,ts,tsx,css}\"",
+        "prettier": "prettier --write --list-different \"packages/*/src/**/*.{js,jsx,ts,tsx,json,css}\" \"examples/*/src/**/*.{js,jsx,ts,tsx,json,css}\"",
         "test_unit": "jest --coverage",
         "test": "yarn run test_unit",
         "tslint": "tslint 'packages/*/src/**/*.*s'"
+    },
+    "jest": {
+        "setupFiles": [
+            "./test-setup.js"
+        ],
+        "preset": "ts-jest/presets/js-with-ts",
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/lib/",
+            "/esm/",
+            "/examples/"
+        ],
+        "transformIgnorePatterns": [
+            "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
+        ],
+        "globals": {
+            "ts-jest": {
+                "isolatedModules": true
+            }
+        }
     },
     "workspaces": [
         "packages/*",

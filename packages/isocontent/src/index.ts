@@ -1,9 +1,8 @@
 import JSONParser, { JsonInput } from './Parser/JSONParser';
 
-module.exports = {
-    parse(json: string | JsonInput) {
-        return new JSONParser().parse(
-            'string' === typeof json ? JSON.parse(json) : json
-        );
-    },
-};
+export function parse(json: string | JsonInput) {
+    return (new JSONParser).parse('string' === typeof json ? JSON.parse(json) : json);
+}
+
+export * from './AST';
+export * from './Parser';

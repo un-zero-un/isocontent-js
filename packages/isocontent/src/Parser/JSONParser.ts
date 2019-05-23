@@ -24,9 +24,7 @@ export type JsonInput = JsonNodeList | JsonNode;
 export default class JSONParser {
     public parse(input: JsonInput): ASTElement {
         if (input instanceof Array) {
-            return NodeList.fromArray(
-                input.map(subNode => this.parse(subNode) as Node)
-            );
+            return NodeList.fromArray(input.map(subNode => this.parse(subNode) as Node));
         }
 
         switch (input.type) {
@@ -36,9 +34,7 @@ export default class JSONParser {
                 return BlockNode.fromBlockType(
                     input.block_type,
                     input.arguments,
-                    input.children
-                        ? (this.parse(input.children) as NodeList)
-                        : null
+                    input.children ? (this.parse(input.children) as NodeList) : null
                 );
         }
     }
