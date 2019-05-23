@@ -1,9 +1,6 @@
 import assert from 'assert';
 
-import NodeList from '../AST/NodeList';
-import JSONParser from './JSONParser';
-import TextNode from '../AST/TextNode';
-import BlockNode from '../AST/BlockNode';
+import { NodeList, TextNode, BlockNode, JSONParser } from '../';
 
 describe('JsonParser', () => {
     it('should parse empty array', () => {

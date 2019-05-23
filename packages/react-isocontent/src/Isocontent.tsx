@@ -1,5 +1,5 @@
 import { parse, BlockNode, JsonInput, NodeList, TextNode, ASTElement } from 'isocontent';
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 
 export interface TextNodeProps {
     node: TextNode;
@@ -20,7 +20,7 @@ interface Props {
 export default function Isocontent({ content, ast, renderBlockNode, renderTextNode }: Props) {
     function renderNode(node: ASTElement | null) {
         if (node instanceof NodeList) {
-            return node.nodes.map((node, i) => <Fragment key={i}>{renderNode(node)}</Fragment>);
+            return node.nodes.map((subNode, i) => <Fragment key={i}>{renderNode(subNode)}</Fragment>);
         }
 
         if (node instanceof BlockNode) {

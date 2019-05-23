@@ -1,8 +1,8 @@
 import assert from 'assert';
 import { shallow } from 'enzyme';
-import React, {Fragment} from 'react';
+import React from 'react';
 
-import Isocontent, { BlockNodeProps, TextNodeProps } from './Isocontent';
+import { Isocontent, BlockNodeProps, TextNodeProps } from './';
 
 describe('<Isocontent />', () => {
     const renderProps = {
@@ -15,12 +15,7 @@ describe('<Isocontent />', () => {
     };
 
     it('Should render text node', () => {
-        const wrapper = shallow(
-            <Isocontent
-                content={{ type: 'text', value: 'foobar' }}
-                {...renderProps}
-            />
-        );
+        const wrapper = shallow(<Isocontent content={{ type: 'text', value: 'foobar' }} {...renderProps} />);
 
         assert.strictEqual(wrapper.length, 1);
         assert.strictEqual(wrapper.children().length, 0);
@@ -41,7 +36,13 @@ describe('<Isocontent />', () => {
 
         assert.strictEqual(wrapper.length, 1);
         assert.strictEqual(wrapper.children().length, 1);
-        assert.strictEqual(wrapper.children().childAt(0).children().length, 0);
+        assert.strictEqual(
+            wrapper
+                .children()
+                .childAt(0)
+                .children().length,
+            0
+        );
         assert.strictEqual(wrapper.children().text(), 'barbaz');
     });
 
@@ -56,8 +57,8 @@ describe('<Isocontent />', () => {
                         {
                             type: 'block',
                             block_type: 'strong',
-                            children: [{type: 'text', value: 'bar baz'}]
-                        }
+                            children: [{ type: 'text', value: 'bar baz' }],
+                        },
                     ],
                 }}
                 {...renderProps}
@@ -83,9 +84,9 @@ describe('<Isocontent />', () => {
                         {
                             type: 'block',
                             block_type: 'strong',
-                            arguments: {level: 4},
-                            children: [{type: 'text', value: 'bar baz'}]
-                        }
+                            arguments: { level: 4 },
+                            children: [{ type: 'text', value: 'bar baz' }],
+                        },
                     ],
                 }}
                 {...renderProps}

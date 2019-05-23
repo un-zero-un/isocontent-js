@@ -23,11 +23,20 @@
         "prettier": "prettier --write --list-different \"packages/*/src/**/*.{js,jsx,ts,tsx,json,css}\" \"examples/*/src/**/*.{js,jsx,ts,tsx,json,css}\"",
         "test_unit": "jest --coverage",
         "test": "yarn run test_unit",
-        "tslint": "tslint 'packages/*/src/**/*.*s'"
+        "tslint": "tslint 'packages/*/src/**/*.t*'"
     },
     "jest": {
         "setupFiles": [
             "./test-setup.js"
+        ],
+        "collectCoverage": true,
+        "collectCoverageFrom": [
+            "packages/*/src/**/*.t*"
+        ],
+        "coveragePathIgnorePatterns": [
+            "/esm/",
+            "/lib/",
+            "/\\.js$/"
         ],
         "preset": "ts-jest/presets/js-with-ts",
         "testPathIgnorePatterns": [

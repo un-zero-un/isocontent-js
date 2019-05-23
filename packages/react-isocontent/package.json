@@ -2,7 +2,9 @@
     "name": "react-isocontent",
     "version": "0.1.0",
     "description": "Render Isocontent ASTs with react",
-    "main": "src/index.js",
+    "main": "lib/index",
+    "module": "esm/index.js",
+    "types": "esm/index.d.ts",
     "repository": "https://github.com/un-zero-un/isocontent-js",
     "author": "Yohan Giarelli <yohan@un-zero-un.fr>",
     "license": "MIT",
@@ -15,5 +17,11 @@
     },
     "dependencies": {
         "isocontent": "^0.1.0"
+    },
+    "scripts": {
+        "build": "yarn run build-cjs && yarn run build-esm",
+        "build-cjs": "rimraf ./lib && tsc",
+        "build-esm": "rimraf ./esm && tsc --outDir esm --module es2015",
+        "watch": "rimraf ./lib && tsc --watch --outDir esm --module es2015"
     }
 }
