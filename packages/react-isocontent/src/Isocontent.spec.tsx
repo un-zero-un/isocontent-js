@@ -1,6 +1,7 @@
 import assert from 'assert';
 import { shallow } from 'enzyme';
 import React from 'react';
+import { TextNode } from 'isocontent';
 
 import { Isocontent, BlockNodeProps, TextNodeProps } from './';
 
@@ -16,6 +17,14 @@ describe('<Isocontent />', () => {
 
     it('Should render text node', () => {
         const wrapper = shallow(<Isocontent content={{ type: 'text', value: 'foobar' }} {...renderProps} />);
+
+        assert.strictEqual(wrapper.length, 1);
+        assert.strictEqual(wrapper.children().length, 0);
+        assert.strictEqual(wrapper.text(), 'foobar');
+    });
+
+    it('Should directly render AST', () => {
+        const wrapper = shallow(<Isocontent ast={TextNode.fromText('foobar')} {...renderProps} />);
 
         assert.strictEqual(wrapper.length, 1);
         assert.strictEqual(wrapper.children().length, 0);
@@ -92,6 +101,14 @@ describe('<Isocontent />', () => {
                 {...renderProps}
             />
         );
+
         assert.strictEqual(wrapper.childAt(1).prop('level'), 4);
+    });
+
+    it('Should render null for unknow Block', () => {
+        const wrapper = shallow(<Isocontent ast={{ TYPE: 'unknown' }} {...renderProps} />);
+
+        assert.strictEqual(wrapper.length, 1);
+        assert.strictEqual(wrapper.text(), '');
     });
 });

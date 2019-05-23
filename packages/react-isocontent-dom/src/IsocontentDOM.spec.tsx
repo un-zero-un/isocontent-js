@@ -67,4 +67,18 @@ describe('<IsocontentDOM />', () => {
 
         assert.strictEqual(result, '<p data-reactroot="">foo qux<h4>bar baz</h4></p>');
     });
+
+    it('Should render block node with a unknow type', () => {
+        const result = renderToString(
+            <IsocontentDOM
+                content={{
+                    type: 'block',
+                    block_type: 'unknown',
+                    children: [{ type: 'text', value: 'foo qux ' }, { type: 'text', value: 'bar baz' }],
+                }}
+            />
+        );
+
+        assert.strictEqual(result, '<div data-reactroot="">foo qux <!-- -->bar baz</div>');
+    });
 });

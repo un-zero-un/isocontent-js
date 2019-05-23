@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {TextNode} from './';
+import { TextNode } from './';
 
 describe('TextNode', () => {
     it('it creates from array with no children', () => {
