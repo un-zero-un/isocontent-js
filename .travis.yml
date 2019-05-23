@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+    - node
+    - lts
+
+env:
+    global:
+        - NODE_ENV=test
+
+cache:
+    yarn: true
+    directories:
+        - ~/.cache
+
+before_install:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+
+script: make install build test
+
+after_script:
+    - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
