@@ -9,12 +9,12 @@
     "author": "Yohan Giarelli <yohan@un-zero-un.fr>",
     "license": "MIT",
     "peerDependencies": {
-        "react": ">=16.8"
+        "react": ">=16.8",
+        "react-native": "^0.59.8"
     },
     "private": false,
     "devDependencies": {
-        "react": "^16.8.6",
-        "react-native": "^0.59.8"
+        "react": "^16.8.6"
     },
     "dependencies": {
         "isocontent": "^0.1.0",
