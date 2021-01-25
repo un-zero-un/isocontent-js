@@ -1,7 +1,7 @@
 import React from 'react';
 import { ASTElement, blockArgument, BlockNode, blockType, JsonInput, Specification } from 'isocontent';
 import Isocontent, { BlockNodeProps, TextNodeProps } from 'react-isocontent';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native';
 
 interface Props {
     content?: string | JsonInput;
@@ -22,6 +22,9 @@ export const defaultStyles = new StyleSheet.create({
     },
     strong: {
         fontWeight: 'bold',
+    },
+    link: {
+        color: 'blue',
     },
     generic: {},
 });
@@ -55,6 +58,20 @@ const defaultBlocks: (styles: StyleSheet) => BlockMap = styles => [
     ],
     [blockType('quote'), ({ node, renderNode }) => <View>{renderNode(node.children)}</View>],
     [blockType('new_line'), () => <View />],
+    [
+        blockType('link'),
+        ({ node, renderNode }) => (
+            <View styles={styles.link}>
+                <TouchableOpacity
+                    onPress={() => {
+                        Linking.openURL(node.props.href);
+                    }}
+                >
+                    {renderNode(node.children)}
+                </TouchableOpacity>
+            </View>
+        ),
+    ],
 ];
 
 export default function IsocontentNative({
@@ -79,8 +96,6 @@ export default function IsocontentNative({
                           const block = styledBlocks.filter(([spec]) => spec.isSatisfiedBy(node));
 
                           if (0 !== block.length) {
-                              console.log(block[0][1]);
-
                               return block[0][1]({ node, renderNode });
                           }
 

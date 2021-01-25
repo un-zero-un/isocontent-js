@@ -26,6 +26,7 @@ const defaultBlocks: BlockMap = [
     [blockType('title').and(blockArgument('level', 5)), 'h5'],
     [blockType('quote'), 'blockquote'],
     [blockType('new_line'), 'br'],
+    [blockType('link'), 'a'],
 ];
 
 function renderBlockNodeFromBlockComponent(
