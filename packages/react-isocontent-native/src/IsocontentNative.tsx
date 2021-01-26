@@ -1,7 +1,7 @@
 import React from 'react';
 import { ASTElement, blockArgument, BlockNode, blockType, JsonInput, Specification } from 'isocontent';
 import Isocontent, { BlockNodeProps, TextNodeProps } from 'react-isocontent';
-import { StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, Text, View, Linking } from 'react-native';
 
 interface Props {
     content?: string | JsonInput;
@@ -25,25 +25,30 @@ export const defaultStyles = new StyleSheet.create({
     },
     link: {
         color: 'blue',
+        textDecorationLine: 'underline',
     },
-    generic: {},
+    list: {},
+    listItem: {},
+    generic: {
+        backgroundColor: 'red',
+    },
 });
 
 const defaultBlocks: (styles: StyleSheet) => BlockMap = styles => [
-    [blockType('paragraph'), ({ node, renderNode }) => <View styles={styles.paragraph}>{renderNode(node.children)}</View>],
-    [blockType('inline_text'), ({ node, renderNode }) => <View styles={styles.inlineText}>{renderNode(node.children)}</View>],
-    [blockType('emphasis'), ({ node, renderNode }) => <View styles={styles.emphasis}>{renderNode(node.children)}</View>],
-    [blockType('strong'), ({ node, renderNode }) => <View styles={styles.strong}>{renderNode(node.children)}</View>],
-    [blockType('generic'), ({ node, renderNode }) => <View styles={styles.generic}>{renderNode(node.children)}</View>],
+    [blockType('paragraph'), ({ node, renderNode }) => <Text style={styles.paragraph}>{renderNode(node.children)}</Text>],
+    [blockType('inline_text'), ({ node, renderNode }) => <Text style={styles.inlineText}>{renderNode(node.children)}</Text>],
+    [blockType('emphasis'), ({ node, renderNode }) => <Text style={styles.emphasis}>{renderNode(node.children)}</Text>],
+    [blockType('strong'), ({ node, renderNode }) => <Text style={styles.strong}>{renderNode(node.children)}</Text>],
+    [blockType('generic'), ({ node, renderNode }) => <View style={styles.generic}>{renderNode(node.children)}</View>],
     [
         blockType('list').and(blockArgument('ordered', false)),
-        ({ node, renderNode }) => <View>{renderNode(node.children)}</View>,
+        ({ node, renderNode }) => <View style={styles.list}>{renderNode(node.children)}</View>,
     ],
     [
         blockType('list').and(blockArgument('ordered', true)),
-        ({ node, renderNode }) => <View>{renderNode(node.children)}</View>,
+        ({ node, renderNode }) => <View style={styles.list}>{renderNode(node.children)}</View>,
     ],
-    [blockType('list_item'), ({ node, renderNode }) => <View>{renderNode(node.children)}</View>],
+    [blockType('list_item'), ({ node, renderNode }) => <View style={styles.listItem}>{renderNode(node.children)}</View>],
     [
         blockType('title').and(blockArgument('level', 3)),
         ({ node, renderNode }) => <View>{renderNode(node.children)}</View>,
@@ -61,15 +66,14 @@ const defaultBlocks: (styles: StyleSheet) => BlockMap = styles => [
     [
         blockType('link'),
         ({ node, renderNode }) => (
-            <View styles={styles.link}>
-                <TouchableOpacity
-                    onPress={() => {
-                        Linking.openURL(node.props.href);
-                    }}
-                >
-                    {renderNode(node.children)}
-                </TouchableOpacity>
-            </View>
+            <Text
+                style={styles.link}
+                onPress={() => {
+                    Linking.openURL(node.props.href);
+                }}
+            >
+                {renderNode(node.children)}
+            </Text>
         ),
     ],
 ];
