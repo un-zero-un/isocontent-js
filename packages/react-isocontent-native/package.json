@@ -17,13 +17,13 @@
         "react": "^16.8.6"
     },
     "dependencies": {
-        "isocontent": "^0.1.0",
-        "react-isocontent": "^0.1.0"
+        "react-isocontent": "^0.1.2"
     },
     "scripts": {
         "build": "yarn run build-cjs && yarn run build-esm",
         "build-cjs": "rimraf ./lib && tsc",
         "build-esm": "rimraf ./esm && tsc --outDir esm --module es2015",
-        "watch": "rimraf ./lib && tsc --watch --outDir esm --module es2015"
+        "watch-cjs": "rimraf ./lib && tsc --watch --outDir lib",
+        "watch-esm": "rimraf ./lib && tsc --watch --outDir esm --module es2015"
     }
 }

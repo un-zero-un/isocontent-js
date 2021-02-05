@@ -7329,6 +7329,11 @@ isobject@^4.0.0:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-4.0.0.tgz#3f1c9155e73b192022a80819bacd0343711697b0"
   integrity sha512-S/2fF5wH8SJA/kmwr6HYhK/RI/OkhD84k8ntalo0iJjZikgq1XFvR5M8NPT1x5F7fBwCG3qHfnzeP/Vh/ZxCUA==
 
+isocontent@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/isocontent/-/isocontent-0.1.2.tgz#d32c5bdee72dc30522978e19f1578d8e9dc7b3a1"
+  integrity sha512-aa6HWh7xI7j1rEq8qcPrd/XOuwD86O2QZRY+Np3GiP9sMHybLC27B8tIYY/0lTZZeDUrrEpKlzvnaUFlkgpYEw==
+
 isomorphic-fetch@^2.1.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
@@ -10759,6 +10764,13 @@ react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
+
+react-isocontent@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-isocontent/-/react-isocontent-0.1.2.tgz#147ff35d0c4b8e9491bd08ddfcd8d0a610510868"
+  integrity sha512-oRzQHRzliFBtBVRqk8zGSX8l6LAHchyBoLsyiBN7jtRb4cVO+2dajqTVKUx5aBFVIYSkBbjEriNbuojRdTXjgA==
+  dependencies:
+    isocontent "^0.1.0"
 
 react-native-branch@2.2.5:
   version "2.2.5"
