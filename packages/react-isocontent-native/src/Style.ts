@@ -57,6 +57,7 @@ export const defaultStyles = new StyleSheet.create({
         borderLeftWidth: 1,
         borderColor: 'black',
     },
+    code: {},
     generic: {
         backgroundColor: 'red',
     },

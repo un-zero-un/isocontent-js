@@ -99,6 +99,7 @@ const defaultBlocks: (styles: StyleSheet) => BlockMap = styles => [
         blockType('separator'),
         ({ node, renderNode }) => <View style={styles.separator}>{renderNode(node.children)}</View>,
     ],
+    [blockType('code'), ({ node, renderNode }) => <Text style={styles.code}>{renderNode(node.children)}</Text>],
 ];
 
 export default function IsocontentNative({
