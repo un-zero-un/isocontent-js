@@ -61,7 +61,5 @@ export const defaultStyles = new StyleSheet.create({
         padding: 20,
         backgroundColor: '#f7f7f7',
     },
-    generic: {
-        backgroundColor: 'red',
-    },
+    generic: {},
 });
